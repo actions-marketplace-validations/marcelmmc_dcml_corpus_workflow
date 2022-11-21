@@ -23,8 +23,11 @@ pushing_files() {
 #######################################
 configure_git(){
   echo "Configuring git"
-  git config --global user.name "ms3-bot"
-  git config --global user.email dcml.annotators@epfl.ch
+  # git config --global user.name "ms3-bot"
+  # git config --global user.email dcml.annotators@epfl.ch
+  # git config --global user.token $Token
+  git config --global user.name "marcel41"
+  git config --global user.email marcel_moran41@hotmail.com
   git config --global user.token $Token
 }
 
