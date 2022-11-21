@@ -15,12 +15,21 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # - name: config git and delete old update_modules branch
+      #   working-directory: ./main
+      #   continue-on-error: true
+      #   run: |
+      #     git config --global user.name "ms3-bot"
+      #     git config --global user.email dcml.annotators@epfl.ch
+      #     git config --global user.token ${{ secrets.MS3_BOT_TOKEN }}
+      #     git push origin --delete update_modules
+
       - name: config git and delete old update_modules branch
         working-directory: ./main
         continue-on-error: true
         run: |
-          git config --global user.name "ms3-bot"
-          git config --global user.email dcml.annotators@epfl.ch
+          git config --global user.name "marcel41"
+          git config --global user.email marcel_moran41@hotmail.com
           git config --global user.token ${{ secrets.MS3_BOT_TOKEN }}
           git push origin --delete update_modules
 
