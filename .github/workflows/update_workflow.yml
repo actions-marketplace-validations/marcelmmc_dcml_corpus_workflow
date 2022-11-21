@@ -50,12 +50,20 @@ jobs:
       #   run: |
       #     curl -s https://"${{secrets.MS3_BOT_TOKEN}}"@raw.githubusercontent.com/DCMLab/unittest_metacorpus/ms3_tests/.gitmodules
       #
+      # - name: Download .gitmodules
+      #   working-directory: ./main
+      #   run: |
+      #     curl -H "Accept: application/vnd.github.raw" \
+      #       -H "Authorization: token ${{ secrets.MS3_BOT_TOKEN }}" \
+      #       https://api.github.com/repos/DCMLab/unittest_metacorpus/contents/.gitmodules?ref=ms3_tests > .gitmodules
+      #     cat .gitmodules
+
       - name: Download .gitmodules
         working-directory: ./main
         run: |
           curl -H "Accept: application/vnd.github.raw" \
             -H "Authorization: token ${{ secrets.MS3_BOT_TOKEN }}" \
-            https://api.github.com/repos/DCMLab/unittest_metacorpus/contents/.gitmodules?ref=ms3_tests > .gitmodules
+            https://api.github.com/repos/marcelmmc/unittest_metacorpus/contents/.gitmodules?ref=ms3_tests > .gitmodules
           cat .gitmodules
 
       # - name: Update submodules and trigger workflows
