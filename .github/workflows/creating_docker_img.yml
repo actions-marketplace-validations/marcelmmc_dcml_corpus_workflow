@@ -21,4 +21,4 @@ jobs:
         with:
           context: "{{defaultContext}}:creating_docker_image"
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:testimg
