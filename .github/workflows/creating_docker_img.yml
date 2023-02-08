@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -16,6 +19,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+
+      - name: config git and delete old update_modules branch
+        continue-on-error: true
+        run: |
+          git config --global user.name "marcelmmc"
+          git config --global user.email marcel.morancalderon@epfl.ch
+          git config --global user.token ${{ secrets.CELMARBOT2 }}
+          git clone git@github.com:marcelmmc/data_reports.git
+          ls -a
+          
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
