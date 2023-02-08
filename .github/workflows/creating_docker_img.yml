@@ -26,9 +26,8 @@ jobs:
           git config --global user.name "marcelmmc"
           git config --global user.email marcel.morancalderon@epfl.ch
           git config --global user.token ${{ secrets.CELMARBOT2 }}
-          git clone git@github.com:marcelmmc/data_reports.git
           ls -a
-          
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
