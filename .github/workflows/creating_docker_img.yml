@@ -21,7 +21,6 @@ jobs:
         token: ${{ secrets.BOTSECRETCELM }}
 
     - name: config git and delete old update_modules branch
-      working-directory: $GITHUB_WORKSPACE
       continue-on-error: true
       run: |
         ls -a
