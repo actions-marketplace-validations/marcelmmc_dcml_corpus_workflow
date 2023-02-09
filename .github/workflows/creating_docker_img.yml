@@ -6,15 +6,6 @@ jobs:
 
     steps:
 
-    - name: config git and delete old update_modules branch
-      continue-on-error: true
-      run: |
-        git config --global user.name "marcel41"
-        git config --global user.email marcel_moran41@hotmail.com
-        git config --global user.token ${{ secrets.BOTSECRETCELM }}
-      env:
-          GITHUB_TOKEN: ${{ secrets.BOTSECRETCELM }}
-
     - name: Checkout main
       uses: actions/checkout@v3
       with:
