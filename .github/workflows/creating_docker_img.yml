@@ -24,8 +24,7 @@ jobs:
       continue-on-error: true
       run: |
         ls -a
-        cp -r data_reports main/
-        cd main
+        cp -r data_reports main/creating_docker_image
         ls -a
 
 
