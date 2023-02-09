@@ -10,9 +10,26 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: marcelmmc/data_reports
+        ref: romantic_corpus
+        path: data_reports
+        token: ${{ secrets.BOTSECRETCELM }}
+
+    - name: Checkout main
+      uses: actions/checkout@v3
+      with:
         path: main
         token: ${{ secrets.BOTSECRETCELM }}
 
+    - name: config git and delete old update_modules branch
+      working-directory: /
+      continue-on-error: true
+      run: |
+        ls -a
+        cp -r data_reports main/
+        cd main
+        ls -a
+
+       
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v2
       #
