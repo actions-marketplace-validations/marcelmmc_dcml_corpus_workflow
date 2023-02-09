@@ -13,11 +13,11 @@ jobs:
       run: |
         git config --global user.name "marcelmmc"
         git config --global user.email marcel.morancalderon@epfl.ch
-        git config --global user.token ${{ secrets.CELMARBOT2 }}
+        git config --global user.token ${{ secrets.BOTSECRETCELM }}
         git clone git@github.com:marcelmmc/data_reports.git
         ls -a
       env:
-          GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
+          GITHUB_TOKEN: ${{ secrets.BOTSECRETCELM }}
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v2
       #
