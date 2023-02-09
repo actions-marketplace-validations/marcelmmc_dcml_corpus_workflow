@@ -1,7 +1,5 @@
 name: creating_docker_img
-
 on: workflow_dispatch
-
 jobs:
   perform_creation_of_image:
     runs-on: ubuntu-latest
