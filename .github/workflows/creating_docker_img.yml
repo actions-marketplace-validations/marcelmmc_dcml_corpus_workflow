@@ -21,7 +21,7 @@ jobs:
         token: ${{ secrets.BOTSECRETCELM }}
 
     - name: config git and delete old update_modules branch
-      working-directory: /
+      working-directory: /home/runner/work/_temp/
       continue-on-error: true
       run: |
         ls -a
@@ -29,7 +29,7 @@ jobs:
         cd main
         ls -a
 
-       
+
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v2
       #
