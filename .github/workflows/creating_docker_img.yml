@@ -16,7 +16,8 @@ jobs:
         git config --global user.token ${{ secrets.CELMARBOT2 }}
         git clone git@github.com:marcelmmc/data_reports.git
         ls -a
-
+      env:
+          GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v2
       #
