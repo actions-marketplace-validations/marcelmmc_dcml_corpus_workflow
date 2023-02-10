@@ -28,7 +28,7 @@ jobs:
         ls -a
 
     - name: transform py or md to notebook
-      working-directory: main/creating_docker_img
+      working-directory: main/creating_docker_image
       continue-on-error: true
       run: |
         ls -a
