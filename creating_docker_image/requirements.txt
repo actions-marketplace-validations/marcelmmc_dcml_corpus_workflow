@@ -1,0 +1,8 @@
+ms3 >= 1.0.2
+dimcat
+plotly
+kaleido
+colorlover
+nbformat
+jupytext
+ipykernel
