@@ -4,7 +4,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Tag Repo
+      - name: Tag Repoo
         uses: richardsimko/update-tag@v1
         with:
           tag_name: 1.2.3
