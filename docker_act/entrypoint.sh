@@ -167,46 +167,9 @@ main(){
   #### ToDo: document arguments
   #### ToDo: make $2 be a version of ms3 and provide one Docker image with every new version
   # echo "Arguments being passed: $1 and $2"
-  echo "Arguments being passed: $1, \ncomment: $comment_msg,\n working dir: ${working_dir}, \ncommitFrom: ${commitFrom},\ndirectory:  ${directory}"
   # set_up_venv $2
-
-  git config --global --add safe.directory "${directory}/${working_dir}"
-  echo "Changing CWD to ${directory}/${working_dir}"
-  cd "${directory}/${working_dir}"
-  configure_git
-  if [[ "$comment_msg" == "dcml_corpus_workflow"* ]]; then
-    echo "Executing: ms3 review -c -M -N -X -D -F --fail"
-    if ! ms3 review -c -M -N -X -D -F --fail; then
-      echo "---------------------------------------------------------------------------------------"
-      git config --global user.name "github-actions[bot]"
-      git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      pushing_files "[bot] ms3 review of all scores (tests failed)"
-      exit -1
-    fi
-
-    echo "---------------------------------------------------------------------------------------"
-    git config --global user.name "github-actions[bot]"
-    git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    pushing_files "[bot] ms3 review of all scores (tests passed)"
-
-  elif [[ "$1" == "push_to_main" ]]; then
-    echo "Executing: ms3 review  -M -N -X -D -F --fail"
-    if ! ms3 review -M -N -X -D -F --fail; then
-      echo "---------------------------------------------------------------------------------------"
-      git config --global user.name "github-actions[bot]"
-      git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      pushing_files "[bot] ms3 review of all scores (tests failed)"
-      exit -1
-    fi
-    echo "---------------------------------------------------------------------------------------"
-    git config --global user.name "github-actions[bot]"
-    git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    pushing_files "[bot] ms3 review of all scores (tests passed)"
-
-  elif [[ "$1" == "push" ]]; then
-    push_to_no_main_branch
-  fi
-
+  echo "hello world"
+  echo "this is a short version"
 }
 
 main $1
