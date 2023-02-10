@@ -1,0 +1,8 @@
+name: test tag release
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: simple action
+      uses: marcelmmc/dcml_corpus_workflow@1.2.3
