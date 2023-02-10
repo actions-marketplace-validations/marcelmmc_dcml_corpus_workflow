@@ -170,6 +170,7 @@ main(){
   # set_up_venv $2
   echo "hello world"
   echo "this is a short version"
+  echo "this is the modified version"
 }
 
 main $1
