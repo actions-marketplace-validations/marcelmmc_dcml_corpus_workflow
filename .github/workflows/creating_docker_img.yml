@@ -28,7 +28,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: update with release with newer tag
-      continue-on-error: true
       run: |
         gh api \
         --method PATCH \
