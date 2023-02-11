@@ -1,4 +1,4 @@
-name: test tag release
+name: test action
 on: workflow_dispatch
 jobs:
   deploy:
