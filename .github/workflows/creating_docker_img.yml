@@ -22,6 +22,7 @@ jobs:
 
     - name: create tag
       uses: negz/create-tag@v1
+      continue-on-error: true
       with:
         version: "v1.2.5"
         message: "v1.2.5"
