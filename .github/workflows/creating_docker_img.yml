@@ -32,7 +32,7 @@ jobs:
       working-directory: ./main
       continue-on-error: true
       run: |
-        gh api --method PATCH -H "Accept: application/vnd.github+json" repos/marcelmmc/dcml_corpus_workflow/releases/92046324 -f tag_name='1.2.3' -f target_commitish='main' -f name='1.2.4' -f body='Description of the release' -F draft=false -F prerelease=false
+        gh api --method PATCH -H "Accept: application/vnd.github+json" repos/marcelmmc/dcml_corpus_workflow/releases/92046324 -f tag_name='1.2.5' -f target_commitish='main' -f name='1.2.4' -f body='Description of the release' -F draft=false -F prerelease=false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
