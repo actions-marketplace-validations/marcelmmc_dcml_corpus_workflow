@@ -26,8 +26,10 @@ jobs:
         version: "v1.2.5"
         message: "v1.2.5"
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: update with release with newer tag
+    - name: Check if pull
+      id: checkpull
       working-directory: ./main
+      continue-on-error: true
       run: |
         gh api \
         --method PATCH \
