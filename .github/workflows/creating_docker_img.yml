@@ -27,7 +27,7 @@ jobs:
         message: "v1.2.5"
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name:  update with release with newer tag
+    - name: update with release with newer tag
       working-directory: ./main
       run: |
         gh api \
