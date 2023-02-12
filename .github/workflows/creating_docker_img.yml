@@ -109,9 +109,14 @@ jobs:
       run: |
         sed "1 s#.*#FROM marcelmoran/dockerms3:${{ steps.generateTag.outputs.new_version }}#" Dockerfile
         cat Dockerfile
+
+        git config --global user.email "marcel.morancalderon@epfl.ch"
+        git config --global user.name "marcelmmc"
         git add Dockerfile
         git commit -m "new version: ${{ steps.generateTag.outputs.new_version }}"
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - name: Check if pull
     #   id: checkpull
     #   working-directory: ./main
