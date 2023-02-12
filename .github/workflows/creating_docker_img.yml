@@ -74,15 +74,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Check if pull
-      id: checkpull
-      working-directory: ./main
-      continue-on-error: true
-      run: |
-        gh api --method PATCH -H "Accept: application/vnd.github+json" repos/marcelmmc/dcml_corpus_workflow/releases/92046324 -f tag_name=${{ steps.generateTag.outputs.new_version }} -f target_commitish='main' -f name='1.2.4' -f body='Description of the release' -F draft=false -F prerelease=false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 
     - name: transform py or md to notebook
       working-directory: main/creating_docker_image/data_reports
@@ -111,3 +102,12 @@ jobs:
         context: "${{ github.workspace }}/main/creating_docker_image"
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:testimg
+
+    - name: Check if pull
+      id: checkpull
+      working-directory: ./main
+      continue-on-error: true
+      run: |
+        gh api --method PATCH -H "Accept: application/vnd.github+json" repos/marcelmmc/dcml_corpus_workflow/releases/92046324 -f tag_name=${{ steps.generateTag.outputs.new_version }} -f target_commitish='main' -f name='1.2.4' -f body='Description of the release' -F draft=false -F prerelease=false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
