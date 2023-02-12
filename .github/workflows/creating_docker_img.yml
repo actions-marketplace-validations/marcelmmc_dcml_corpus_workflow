@@ -64,7 +64,7 @@ jobs:
         ls -a
 
     - name: get version of ms3 and dimcat
-      working_dir: main/creating_docker_image
+      working-directory: main/creating_docker_image
       continue-on-error: true
       run: |
         while read line; do
