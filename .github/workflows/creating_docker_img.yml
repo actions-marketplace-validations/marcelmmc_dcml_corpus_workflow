@@ -104,7 +104,7 @@ jobs:
     #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:${{ steps.generateTag.outputs.new_version }}
 
     - name: update the dockerfile with pushed image version
-      working-directory: main/creating_docker_image/
+      working-directory: main/docker_act/
       continue-on-error: true
       run: |
         cat Dockerfile
