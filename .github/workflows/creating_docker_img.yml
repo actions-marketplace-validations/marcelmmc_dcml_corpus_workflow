@@ -69,7 +69,7 @@ jobs:
       run: |
         while read line; do
           if [[ "$line" == *"ms3"* ]] || [[ "$line" == *"dimcat"* ]]; then
-            # pip download $line
+            pip download $line
             echo $line
           fi
         done < "requirements.txt"
