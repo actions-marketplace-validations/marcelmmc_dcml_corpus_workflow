@@ -111,8 +111,3 @@ jobs:
         context: "${{ github.workspace }}/main/creating_docker_image"
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:testimg
-
-    - name: checkoutOutput
-      continue-on-error: true
-      run: |
-        echo "${{ steps.dockerBuild.outputs.hello }}"

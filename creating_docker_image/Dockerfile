@@ -11,4 +11,3 @@ FROM python:3.10-slim-bullseye
 #RUN pip install -r requirements.txt
 #
 #RUN ipython kernel install --name "dimcat" --user
-RUN echo "hello=bonjour" >> $GITHUB_OUTPUT
