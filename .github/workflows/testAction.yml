@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: simple action
-      uses: marcelmmc/dcml_corpus_workflow@1.2.3
+      uses: marcelmmc/dcml_corpus_workflow@v1.9.4-ms3-1.2.3-dimcat-0.3.0-data_reports-a32e3b4
