@@ -107,7 +107,7 @@ jobs:
       working-directory: main/creating_docker_image/
       continue-on-error: true
       run: |
-        sed "1 s/FROM*/FROM marcelmoran/dockerms3:${{ steps.generateTag.outputs.new_version }}"
+        sed "1s/FROM*/FROM marcelmoran/dockerms3:${{ steps.generateTag.outputs.new_version }}"
         cat Dockerfile
 
     # - name: Check if pull
