@@ -104,9 +104,10 @@ jobs:
     #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerms3:${{ steps.generateTag.outputs.new_version }}
 
     - name: update the dockerfile with pushed image version
-      working-directory: main/docker_act/
+      working-directory: main
       continue-on-error: true
       run: |
+        cd docker_act
         cat Dockerfile
         sed "1 s#.*#FROM marcelmoran/dockerms3:${{ steps.generateTag.outputs.new_version }}#" Dockerfile
         cat Dockerfile
