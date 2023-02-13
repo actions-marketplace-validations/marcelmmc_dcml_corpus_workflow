@@ -14,7 +14,7 @@ jobs:
     - name: transform py or md to notebook
       continue-on-error: true
       run: |
-        cd ${{ $GITHUB_WORKSPACE }}/main/testPath/beethoven_piano_sonatas
+        cd ${{ $GITHUB_WORKSPACE }}/main/testPath/tchaikovsky_seasons
         ls -a
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v1.9.5-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
