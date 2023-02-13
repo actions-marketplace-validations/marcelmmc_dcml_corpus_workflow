@@ -30,8 +30,8 @@ configure_git(){
   # git config --global user.name "ms3-bot"
   # git config --global user.email dcml.annotators@epfl.ch
   # git config --global user.token $Token
-  git config --global user.name "marcel41"
-  git config --global user.email marcel_moran41@hotmail.com
+  git config --global user.name "marcelmmc"
+  git config --global user.email marcel.morancalderon@epfl.ch
   git config --global user.token $Token
 }
 
@@ -168,9 +168,15 @@ main(){
   #### ToDo: make $2 be a version of ms3 and provide one Docker image with every new version
   # echo "Arguments being passed: $1 and $2"
   # set_up_venv $2
+  configure_git
   echo "hello world"
   echo "this is a short version"
   echo "this is the modified version"
+  cd creating_docker_image/data_reports
+  jupyter nbconvert --execute --allow-errors --to html generate.ipynb
+  git add generate.html
+  git commit -m "generate html"
+  git push
 }
 
 main $1
