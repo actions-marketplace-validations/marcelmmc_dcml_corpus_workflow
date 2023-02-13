@@ -17,7 +17,7 @@ jobs:
         cd "$PATH_TO_REPO"
         ls -a
       env:
-        PATH_TO_REPO: ${{ $GITHUB_WORKSPACE }}/main/testPath/beethoven_piano_sonatas
+        PATH_TO_REPO: ${{ GITHUB_WORKSPACE }}/main/testPath/beethoven_piano_sonatas
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v1.9.5-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
     # env:
