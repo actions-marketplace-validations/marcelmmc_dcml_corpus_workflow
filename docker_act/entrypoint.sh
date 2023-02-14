@@ -168,7 +168,7 @@ main(){
   #### ToDo: make $2 be a version of ms3 and provide one Docker image with every new version
   # echo "Arguments being passed: $1 and $2"
   # set_up_venv $2
-
+  git config --global --add safe.directory "${directory}/${working_dir}"
   ipython kernel install --name "dimcat" --user
   echo "PATH_TO_REPO=$directory/$working_dir/testPath/beethoven_piano_sonatas" >> $GITHUB_ENV
   configure_git
