@@ -1,4 +1,4 @@
-FROM marcelmoran/dockerms3:v1.9.9-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
+FROM marcelmoran/dockerms3:v2.0.0-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
 RUN apt-get -y update
 RUN apt-get -y install git
 RUN pip install git+https://github.com/johentsch/ms3.git@corpus_structure
