@@ -168,11 +168,12 @@ main(){
   #### ToDo: make $2 be a version of ms3 and provide one Docker image with every new version
   # echo "Arguments being passed: $1 and $2"
   # set_up_venv $2
+  echo "PATH_TO_REPO=$directory/$working_dir/main/testPath/beethoven_piano_sonatas" >> $GITHUB_ENV
   configure_git
   echo "hello world"
   echo "this is a short version"
   echo "this is the modified version"
-  cd creating_docker_image/data_reports
+  cd "$directory/$working_dir/creating_docker_image/data_reports"
   jupyter nbconvert --execute --allow-errors --to html generate.ipynb
   git add generate.html
   git commit -m "generate html"
