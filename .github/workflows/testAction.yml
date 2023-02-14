@@ -13,7 +13,7 @@ jobs:
 
 
     - name: simple action
-      uses: marcelmmc/dcml_corpus_workflow@v1.9.7-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
+      uses: marcelmmc/dcml_corpus_workflow@v1.9.8-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
       env:
         directory: "${{ github.workspace }}"
         working_dir: ${{ github.event.repository.name }}
