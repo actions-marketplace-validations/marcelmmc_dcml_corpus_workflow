@@ -173,8 +173,11 @@ main(){
   echo "hello world"
   echo "this is a short version"
   echo "this is the modified version"
-  cd "$directory/$working_dir/creating_docker_image/data_reports"
+  cd /data_reports
+  # cd "$directory/$working_dir/creating_docker_image/data_reports"
   jupyter nbconvert --execute --allow-errors --to html generate.ipynb
+  cp generate.html "$directory/$working_dir"
+  cd "$directory/$working_dir"
   git add generate.html
   git commit -m "generate html"
   git push
