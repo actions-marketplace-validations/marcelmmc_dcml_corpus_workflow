@@ -18,9 +18,9 @@ jobs:
         directory: "${{ github.workspace }}"
         working_dir: ${{ github.event.repository.name }}
 
-
-    - name: check path exists
-      continue-on-error: true
-      run: |
-        cd "$PATH_TO_REPO"
-        ls -a
+    # 
+    # - name: check path exists
+    #   continue-on-error: true
+    #   run: |
+    #     cd "$PATH_TO_REPO"
+    #     ls -a

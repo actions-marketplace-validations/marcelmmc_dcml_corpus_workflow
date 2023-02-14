@@ -170,7 +170,8 @@ main(){
   # set_up_venv $2
   git config --global --add safe.directory "${directory}/${working_dir}"
   ipython kernel install --name "dimcat" --user
-  echo "PATH_TO_REPO=$directory/$working_dir/testPath/tchaikovsky_seasons" >> $GITHUB_ENV
+  # echo "PATH_TO_REPO=$directory/$working_dir/testPath/tchaikovsky_seasons" >> $GITHUB_ENV
+  export PATH_TO_REPO="$directory/$working_dir/testPath/tchaikovsky_seasons"
   configure_git
   echo "hello world"
   echo "this is a short version"
