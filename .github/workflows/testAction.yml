@@ -13,12 +13,12 @@ jobs:
 
 
     - name: simple action
-      uses: marcelmmc/dcml_corpus_workflow@v2.0.0-ms3-1.2.3-dimcat-0.3.0-data_reports-236344a
+      uses: marcelmmc/dcml_corpus_workflow@v2.0.1-ms3-1.2.3-dimcat-0.3.0-data_reports-a79ac75
       env:
         directory: "${{ github.workspace }}"
         working_dir: ${{ github.event.repository.name }}
 
-    # 
+    #
     # - name: check path exists
     #   continue-on-error: true
     #   run: |
