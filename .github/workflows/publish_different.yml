@@ -30,10 +30,11 @@ jobs:
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         if git show-ref --quiet refs/heads/gh-pages; then
+          git checkout gh-pages
+        else
           git checkout -b gh-pages
           git push --set-upstream origin gh-pages
         fi
-        git checkout gh-pages
 
     - name: add files here
       run: |
