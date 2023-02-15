@@ -18,17 +18,21 @@ jobs:
     #     path: "${{ github.workspace }}/${{ github.event.repository.name }}/pages"
     #     if-no-files-found: error
 
-    - name: Init new repo in dist folder and commit generated files
-      run: |
-        cd ${{ github.event.repository.name }}
-        git config --local user.email "marcel.morancalderon@epfl.ch"
-        git config --local user.name "marcelmmc"
-        git checkout -b gh-pages
-        git push --set-upstream origin gh-pages
+    # - name: Init new repo in dist folder and commit generated files
+    #   continue-on-error: true
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
 
     - name: change dir
       run: |
+
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
         cd ${{ github.event.repository.name }}
+        if git show-ref --quiet refs/heads/gh-pages; then
+          git checkout -b gh-pages
+          git push --set-upstream origin gh-pages
+        fi
         git checkout gh-pages
 
     - name: add files here
