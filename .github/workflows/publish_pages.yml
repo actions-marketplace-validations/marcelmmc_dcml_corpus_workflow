@@ -14,8 +14,9 @@ jobs:
     - name: Init new repo in dist folder and commit generated files
       run: |
         mkdir pages
-        cd pages
+        ls -a
         cp "$WORKSPACE/${{ github.event.repository.name }}/pages" .
+        cd pages
         ls -a
         git init
         git add -A
