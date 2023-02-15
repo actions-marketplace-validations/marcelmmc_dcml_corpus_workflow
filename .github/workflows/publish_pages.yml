@@ -15,7 +15,7 @@ jobs:
       run: |
         mkdir pages
         ls -a
-        cp "${{ github.workspace }}/${{ github.event.repository.name }}/pages" .
+        cp "${{ github.workspace }}/${{ github.event.repository.name }}/pages/*" .
         cd pages
         ls -a
         git init
