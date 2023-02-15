@@ -32,10 +32,10 @@ jobs:
         cd ${{ github.event.repository.name }}
         git checkout gh-pages
         rm -rf !(pages)
-        cp pages/ .
-        git add .
-        git commit -m "deploy"
-        git push
+        # cp pages/ .
+        # git add .
+        # git commit -m "deploy"
+        # git push
 
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v2.0.1-ms3-1.2.3-dimcat-0.3.0-data_reports-a79ac75
