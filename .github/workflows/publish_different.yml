@@ -26,9 +26,9 @@ jobs:
     - name: change dir
       run: |
 
+        cd ${{ github.event.repository.name }}
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
-        cd ${{ github.event.repository.name }}
         if git show-ref --quiet refs/heads/gh-pages; then
           git checkout -b gh-pages
           git push --set-upstream origin gh-pages
