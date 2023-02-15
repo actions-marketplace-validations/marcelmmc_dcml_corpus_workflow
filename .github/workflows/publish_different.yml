@@ -22,8 +22,8 @@ jobs:
       continue-on-error: true
       run: |
         cd ${{ github.event.repository.name }}
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
         git checkout -b gh-pages
         git push --set-upstream origin gh-pages
 
