@@ -23,7 +23,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m 'deploy'
-        git config --global --add safe.directory "$GITHUB_WORKSPACE/pages"
+        # git config --global --add safe.directory "$GITHUB_WORKSPACE/pages"
+        git config --global --add safe.directory /github/workspace/pages
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v2.0.1-ms3-1.2.3-dimcat-0.3.0-data_reports-a79ac75
     #   env:
