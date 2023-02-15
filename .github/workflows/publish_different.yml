@@ -29,8 +29,11 @@ jobs:
         cd ${{ github.event.repository.name }}
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
-        if git show-ref --quiet refs/heads/gh-pages; then
+        exists=`git show-ref refs/heads/gh-pages`
+
+        if [[ -n "$exists" ]]; then
           git checkout gh-pages
+          echo "exist"
         else
           git checkout -b gh-pages
           git push --set-upstream origin gh-pages
