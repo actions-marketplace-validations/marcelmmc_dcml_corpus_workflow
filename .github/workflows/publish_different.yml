@@ -36,7 +36,7 @@ jobs:
       run: |
         cd ${{ github.event.repository.name }}
         shopt -s extglob
-        rm -rf !(update_modules|README.md|.git)
+        rm -rf !(update_modules|README.md|.git|pages)
         cp pages/ .
         git add .
         git commit -m "deploy"
