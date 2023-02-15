@@ -1,4 +1,4 @@
-name: publish pages
+name: publish pages d
 on: workflow_dispatch
 jobs:
   deploy:
@@ -21,9 +21,9 @@ jobs:
     - name: Init new repo in dist folder and commit generated files
       continue-on-error: true
       run: |
+        cd ${{ github.event.repository.name }}
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        cd ${{ github.event.repository.name }}
         git checkout -b gh-pages
         git push origin gh-pages
 
