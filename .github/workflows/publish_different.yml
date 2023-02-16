@@ -31,7 +31,7 @@ jobs:
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
         git branch --all
-        # exist=$(git branch --all | grep "gh-spages")
+        exist=$(git branch --all | grep "gh-spages")
         # # echo "$exist"
         # if [[ -z "$exist" ]]; then
         #   echo "exists"
