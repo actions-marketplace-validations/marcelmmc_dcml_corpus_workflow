@@ -63,4 +63,3 @@ jobs:
         branch: gh-pages
         force: true
         directory: ./pages
-        ls -a
