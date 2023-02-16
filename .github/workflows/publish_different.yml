@@ -34,6 +34,7 @@ jobs:
           echo "exists"
           git checkout gh-pages
         else
+          echo "does not exit"
           git checkout -b gh-pages
           git push --set-upstream origin gh-pages
         fi
