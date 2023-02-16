@@ -30,15 +30,16 @@ jobs:
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
-        exist=$(git branch --all | grep "gh-pages")
-        if [[ -z "$exist" ]]; then
-          echo "exists"
-          git checkout gh-pages
-        else
-          echo "does not exit"
-          git checkout -b gh-pages
-          git push --set-upstream origin gh-pages
-        fi
+        git branch --all
+        # exist=$(git branch --all | grep "gh-pages")
+        # if [[ -z "$exist" ]]; then
+        #   echo "exists"
+        #   git checkout gh-pages
+        # else
+        #   echo "does not exit"
+        #   git checkout -b gh-pages
+        #   git push --set-upstream origin gh-pages
+        # fi
 
 
     # - name: add files here
