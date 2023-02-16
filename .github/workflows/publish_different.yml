@@ -30,8 +30,8 @@ jobs:
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
-        exist=$(git ls-remote --heads git@github.com:marcelmmc/dcml_corpus_workflow.git gh-pages | wc -l)
-        if [[ "$exist" == "1" ]]; then
+        exist=$(git branch --all | grep "gh-pages")
+        if [[ -z "$exist" ]]; then
           echo "exists"
           git checkout gh-pages
         else
