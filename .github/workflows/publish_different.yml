@@ -31,36 +31,36 @@ jobs:
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
-        git branch --all
-        exist=$(echo $(git branch --all | grep "gh-pages"))
-        if [[ -z "$exist" ]]; then
-          git checkout -b gh-pages
-          git push --set-upstream origin gh-pages
-        else
-          git checkout gh-pages
-        fi
+        # git branch --all
+        # exist=$(echo $(git branch --all | grep "gh-pages"))
+        # if [[ -z "$exist" ]]; then
+        #   git checkout -b gh-pages
+        #   git push --set-upstream origin gh-pages
+        # else
+        #   git checkout gh-pages
+        # fi
 
 
-    - name: add files here
-      run: |
-        cd ${{ github.event.repository.name }}
-        shopt -s extglob
-        rm -rf !(update_modules|.git|pages)
-        cp ../pages/* .
-        git add .
-        git commit -m "deploy"
-        git push
+    # - name: add files here
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     shopt -s extglob
+    #     rm -rf !(update_modules|.git|pages)
+    #     cp ../pages/* .
+    #     git add .
+    #     git commit -m "deploy"
+    #     git push
 
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v2.0.1-ms3-1.2.3-dimcat-0.3.0-data_reports-a79ac75
     #   env:
     #     directory: "${{ github.workspace }}"
     #     working_dir: ${{ github.event.repository.name }}
-    # - name: Force push to destination branch
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     branch: gh-pages
-    #     force: true
-    #     directory: ./pages
-    #     ls -a
+    - name: Force push to destination branch
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        force: true
+        directory: ./pages
+        ls -a
