@@ -8,7 +8,7 @@ name: publish branch
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: [gh-pages]
+    branches: [testing_branch]
 jobs:
   # Build job
   build:
