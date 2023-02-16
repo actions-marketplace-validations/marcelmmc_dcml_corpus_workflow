@@ -32,14 +32,12 @@ jobs:
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
         git branch --all
-        exist=$(echo $(git branch --all | grep "s-pages"))
+        exist=$(echo $(git branch --all | grep "gh-pages"))
         if [[ -z "$exist" ]]; then
-          echo "exists"
-          # git checkout gh-pages
+          git checkout -b gh-pages
+          git push --set-upstream origin gh-pages
         else
-          echo "does not exit"
-          # git checkout -b gh-pages
-          # git push --set-upstream origin gh-pages
+          git checkout gh-pages
         fi
 
 
