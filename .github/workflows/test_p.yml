@@ -9,5 +9,3 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3.0.1
-        with:
-          token: ${{ secrets.CELMARBOT2 }}
