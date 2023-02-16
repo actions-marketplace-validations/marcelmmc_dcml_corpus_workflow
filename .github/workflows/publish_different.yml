@@ -48,7 +48,7 @@ jobs:
         shopt -s extglob
         rm -rf !(update_modules|.git|pages)
         cp ../pages/* .
-        cp -r ../github .
+        cp -r ../.github .
         git add .
         git commit -m "deploy"
         git push
