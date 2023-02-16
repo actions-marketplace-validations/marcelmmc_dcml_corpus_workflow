@@ -31,6 +31,7 @@ jobs:
         git config --local user.name "marcelmmc"
         exist=$(git ls-remote --heads git@github.com:marcelmmc/dcml_corpus_workflow.git gh-pages | wc -l)
         if [[ "$exist" == "1" ]]; then
+          echo "exists"
           git checkout gh-pages
         else
           git checkout -b gh-pages
