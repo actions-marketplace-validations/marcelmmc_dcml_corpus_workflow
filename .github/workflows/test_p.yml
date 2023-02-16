@@ -1,0 +1,13 @@
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+name: publish branch
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3.0.1
+        with:
+          token: ${{ secrets.CELMARBOT2 }}
