@@ -23,23 +23,32 @@ jobs:
     #   run: |
     #     cd ${{ github.event.repository.name }}
 
+    # - name: change dir
+    #   continue-on-error: true
+    #   run: |
+    #     cp -r ${{ github.event.repository.name }}/pages .
+    #     cd ${{ github.event.repository.name }}
+    #     git config --local user.email "marcel.morancalderon@epfl.ch"
+    #     git config --local user.name "marcelmmc"
+    #     git config --global user.token ${{ secrets.CELMARBOT2 }}
+    #     # git branch --all
+    #     # exist=$(echo $(git branch --all | grep "gh-pages"))
+    #     # if [[ -z "$exist" ]]; then
+    #     #   git checkout -b gh-pages
+    #     #   git push --set-upstream origin gh-pages
+    #     # else
+    #     #   git checkout gh-pages
+    #     # fi
     - name: change dir
       continue-on-error: true
       run: |
         cp -r ${{ github.event.repository.name }}/pages .
-        cd ${{ github.event.repository.name }}
+        cd pages
+        git init
+        git add -A
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
-        git config --global user.token ${{ secrets.CELMARBOT2 }}
-        # git branch --all
-        # exist=$(echo $(git branch --all | grep "gh-pages"))
-        # if [[ -z "$exist" ]]; then
-        #   git checkout -b gh-pages
-        #   git push --set-upstream origin gh-pages
-        # else
-        #   git checkout gh-pages
-        # fi
-
+        git commit -m 'deploy'
 
     # - name: add files here
     #   run: |
@@ -58,6 +67,7 @@ jobs:
     #     working_dir: ${{ github.event.repository.name }}
     - name: Force push to destination branch
       uses: ad-m/github-push-action@master
+      working-directory: ${{ github.event.repository.name }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
