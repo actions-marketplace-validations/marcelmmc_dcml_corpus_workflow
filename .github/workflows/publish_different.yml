@@ -42,29 +42,29 @@ jobs:
         fi
 
 
-    # - name: add files here
-    #   run: |
-    #     cd ${{ github.event.repository.name }}
-    #     shopt -s extglob
-    #     rm -rf !(update_modules|.git|pages|.github/workflows/testtrigger.yml)
-    #     cp ../pages/* .
-    #     cp -r ../.github .
-    #     git add .
-    #     git commit -m "deploy"
-    #     git push
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
-
     - name: add files here
       run: |
-        cd pages
-        git init
-        git add -A
-        git config --local user.email "marcel.morancalderon@epfl.ch"
-        git config --local user.name "marcelmmc"
-        git commit -m 'deploy'
+        cd ${{ github.event.repository.name }}
+        shopt -s extglob
+        rm -rf !(update_modules|.git|pages|.github/workflows/testtrigger.yml)
+        cp ../pages/* .
+        cp -r ../.github .
+        git add .
+        git commit -m "deploy"
+        git push
       env:
         GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
+
+    # - name: add files here
+    #   run: |
+    #     cd pages
+    #     git init
+    #     git add -A
+    #     git config --local user.email "marcel.morancalderon@epfl.ch"
+    #     git config --local user.name "marcelmmc"
+    #     git commit -m 'deploy'
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
 
 
 
@@ -73,10 +73,10 @@ jobs:
     #   env:
     #     directory: "${{ github.workspace }}"
     #     working_dir: ${{ github.event.repository.name }}
-    - name: Force push to destination branch
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.CELMARBOT2 }}
-        branch: gh-pages
-        force: true
-        directory: ./pages
+    # - name: Force push to destination branch
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.CELMARBOT2 }}
+    #     branch: gh-pages
+    #     force: true
+    #     directory: ./pages
