@@ -46,7 +46,7 @@ jobs:
       run: |
         cd ${{ github.event.repository.name }}
         shopt -s extglob
-        rm -rf !(update_modules|.git|pages)
+        rm -rf !(update_modules|.git|pages|.github/workflows/testtrigger.yml)
         cp ../pages/* .
         cp -r ../.github .
         git add .

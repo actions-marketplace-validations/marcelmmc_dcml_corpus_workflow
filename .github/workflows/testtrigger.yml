@@ -1,0 +1,16 @@
+name: b_publish
+on:
+  push:
+    branches:
+      - gh-pages
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Gen dummy page
+        run: |
+          mkdir public
+          echo "working trigger"
