@@ -9,7 +9,7 @@ jobs:
       with:
         path: ${{ github.event.repository.name }}
         fetch-depth: 0
-        token: ${{ secrets.MARCEL41BOT1 }}
+        token: ${{ secrets.CELMARBOT2 }}
 
     # - name: upload pages
     #   uses: actions/upload-artifact@master
@@ -29,9 +29,9 @@ jobs:
         cp -r ${{ github.event.repository.name }}/pages .
         cp -r ${{ github.event.repository.name }}/.github .
         cd ${{ github.event.repository.name }}
-        git config --local user.email "marcel_moran41@hotmail.com"
-        git config --local user.name "marcel41"
-        git config --global user.token ${{ secrets.MARCEL41BOT1 }}
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
+        git config --global user.token ${{ secrets.CELMARBOT2 }}
         git branch --all
         exist=$(echo $(git branch --all | grep "gh-pages"))
         if [[ -z "$exist" ]]; then
@@ -53,18 +53,18 @@ jobs:
     #     git commit -m "deploy"
     #     git push
     #   env:
-    #     GITHUB_TOKEN: ${{ secrets.MARCEL41BOT1 }}
+    #     GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
 
     - name: add files here
       run: |
         cd pages
         git init
         git add -A
-        git config --local user.email "marcel_moran41@hotmail.com"
-        git config --local user.name "marcel41"
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
         git commit -m 'deploy'
       env:
-        GITHUB_TOKEN: ${{ secrets.MARCEL41BOT1 }}
+        GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
 
 
 
@@ -76,7 +76,7 @@ jobs:
     - name: Force push to destination branch
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.MARCEL41BOT1 }}
+        github_token: ${{ secrets.CELMARBOT2 }}
         branch: gh-pages
         force: true
         directory: ./pages
