@@ -42,31 +42,41 @@ jobs:
         fi
 
 
+    # - name: add files here
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     shopt -s extglob
+    #     rm -rf !(update_modules|.git|pages|.github/workflows/testtrigger.yml)
+    #     cp ../pages/* .
+    #     cp -r ../.github .
+    #     git add .
+    #     git commit -m "deploy"
+    #     git push
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.MARCEL41BOT1 }}
+
     - name: add files here
       run: |
-        cd ${{ github.event.repository.name }}
-        shopt -s extglob
-        rm -rf !(update_modules|.git|pages|.github/workflows/testtrigger.yml)
-        cp ../pages/* .
-        cp -r ../.github .
-        git add .
-        git commit -m "deploy"
-        git push
+        cd pages
+        git init
+        git add -A
+        git config --local user.email "marcel_moran41@hotmail.com"
+        git config --local user.name "marcel41"
+        git commit -m 'deploy'
       env:
         GITHUB_TOKEN: ${{ secrets.MARCEL41BOT1 }}
 
 
-      
+
     # - name: simple action
     #   uses: marcelmmc/dcml_corpus_workflow@v2.0.1-ms3-1.2.3-dimcat-0.3.0-data_reports-a79ac75
     #   env:
     #     directory: "${{ github.workspace }}"
     #     working_dir: ${{ github.event.repository.name }}
-    # - name: Force push to destination branch
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     branch: gh-pages
-    #     force: true
-    #     directory: ./pages
-    #     ls -a
+    - name: Force push to destination branch
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.MARCEL41BOT1 }}
+        branch: gh-pages
+        force: true
+        directory: ./pages
