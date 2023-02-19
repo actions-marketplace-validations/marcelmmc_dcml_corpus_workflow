@@ -1,8 +1,9 @@
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 name: publish branchxx
 on:
-  workflow_dispatch:
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+  push:
+    branches:
+      - gh-pages
 permissions:
   contents: read
   pages: write
