@@ -9,7 +9,7 @@ jobs:
       with:
         path: ${{ github.event.repository.name }}
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.MARCEL41BOT1 }}
 
     # - name: upload pages
     #   uses: actions/upload-artifact@master
