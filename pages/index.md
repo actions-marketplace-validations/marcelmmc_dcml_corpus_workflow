@@ -1,2 +1,2 @@
-* [Modulation plans](gantt.md)
-* [Corpus state](stats.md)
+* [Modulation plans](generate.html)
+* [Corpus state](test.txt)
