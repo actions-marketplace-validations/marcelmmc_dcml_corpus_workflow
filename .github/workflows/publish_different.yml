@@ -51,7 +51,7 @@ jobs:
           echo "* [Stats](notes_stats.md)" >> "pages/index.md"
         else
           line=$(head -n 1 index.md)
-          if [[ line != "\* [Generate](generate.md)"]]; then
+          if [[ line != "\* [Generate](generate.md)" ]]; then
             echo "Add links to generate and notes_stats"
             echo "* [Generate](generate.md)" >> "pages/index.md"
             echo "* [Stats](notes_stats.md)" >> "pages/index.md"
