@@ -44,7 +44,7 @@ jobs:
 
     - name: add index.md in gh-pages
       run: |
-        cd ${{ github.event.repository.name }}
+        # cd ${{ github.event.repository.name }}
         if [[ ! -f index.md ]]; then
           echo "Index not found, creating a new index"
           echo "* [Generate](generate.md)" > "pages/index.md"
