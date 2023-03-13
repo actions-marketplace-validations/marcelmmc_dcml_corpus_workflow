@@ -26,6 +26,7 @@ jobs:
     - name: change dir
       continue-on-error: true
       run: |
+        cp -r ${{ github.event.repository.name }}/pages .
         cd ${{ github.event.repository.name }}
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
@@ -42,7 +43,6 @@ jobs:
 
     - name: add index.md in gh-pages
       run: |
-        cp -r ${{ github.event.repository.name }}/pages .
         if [[ ! -f /pages/index.md ]]; then
           echo "Index not found, creating a new index"
           echo "* [Generate](generate.html)" > "pages/index.md"
