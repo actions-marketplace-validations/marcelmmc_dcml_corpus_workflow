@@ -66,7 +66,7 @@ jobs:
         rm -rf *
         if [[ ! -f .github/workflows ]]; then
           rm -rf .github/workflows
-        else
+        fi
         cp ../pages/* .
         git add .
         git commit -m "deploy"
