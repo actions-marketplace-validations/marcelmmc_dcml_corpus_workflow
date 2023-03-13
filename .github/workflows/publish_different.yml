@@ -43,7 +43,7 @@ jobs:
     - name: add index.md in gh-pages
       run: |
         cp -r ${{ github.event.repository.name }}/pages .
-        if [[ ! -f pages/index.md ]]; then
+        if [[ ! -f /pages/index.md ]]; then
           echo "Index not found, creating a new index"
           echo "* [Generate](generate.html)" > "pages/index.md"
           echo "* [Generate](notes_stats.html)" >> "pages/index.md"
