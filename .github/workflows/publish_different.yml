@@ -64,6 +64,9 @@ jobs:
         cd ${{ github.event.repository.name }}
         shopt -s extglob
         rm -rf *
+        if [[ ! -f .github/workflows ]]; then
+          rm -rf .github/workflows
+        else
         cp ../pages/* .
         git add .
         git commit -m "deploy"
