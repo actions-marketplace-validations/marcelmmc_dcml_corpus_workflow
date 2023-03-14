@@ -1,0 +1,87 @@
+name: generate_and_publish_pages
+on: workflow_dispatch
+jobs:
+  generate&publish:
+    if: >
+      github.actor != 'ms3-bot' && github.event.pusher.name != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout corpus repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.MS3_BOT_TOKEN }}
+        path: ${{ github.event.repository.name }}
+
+    - name: Generate html from corpus via dcml_corpus_workflow action
+      uses: DCMLab/dcml_corpus_workflow@v2.6.9-ms3-1.2.4.post0.dev3-g5df6c9f-dimcat-0.3.0.post1.dev3-gde5198b
+      id: act_docker
+      with:
+        ms3-command: "update_website"
+      env:
+        Token: "${{ secrets.MS3_BOT_TOKEN }}"
+        commitFrom: "${{ github.event.before }}"
+        comment_msg:  "${{ github.event.head_commit.message }}"
+        directory: "${{ github.workspace }}"
+        working_dir: ${{ github.event.repository.name }}
+        envPath: "${{ github.workspace }}/${{ github.event.repository.name }}"
+
+    - name: Check pages are generated
+      continue-on-error: false
+      run: |
+        if [[ -f /pages/generate.html ]] && [[ -f /pages/notes_stats.html ]]; then
+          echo "Pages generated"
+        else
+          echo "There was a problem generating pages"
+          exit 1
+        fi
+
+    - name: Switch or create a gh-pages branch
+      continue-on-error: true
+      run: |
+        cd ${{ github.event.repository.name }}
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "dcml.annotators@epfl.ch"
+        git config --global user.token ${{ secrets.MS3_BOT_TOKEN }}
+        git branch --all
+        exist=$(echo $(git branch --all | grep "gh-pages"))
+        if [[ -z "$exist" ]]; then
+          git checkout -b gh-pages
+          git push --set-upstream origin gh-pages
+        else
+          git checkout gh-pages
+        fi
+
+
+    - name: Add index.md linked to pages
+      run: |
+        if [[ ! -f /pages/index.md ]]; then
+          echo "Index not found, creating a new index"
+          echo "* [Generate](generate.html)" > "pages/index.md"
+          echo "* [Notes_stats](notes_stats.html)" >> "pages/index.md"
+        else
+          line=$(head -n 1 index.md)
+          if [[ line != "\* [Generate](generate.md)" ]]; then
+            echo "Add links to generate and notes_stats"
+            echo "* [Generate](generate.html)" > "pages/index.md"
+            echo "* [Notes_stats](notes_stats.html)" >> "pages/index.md"
+          fi
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.MS3_BOT_TOKEN }}
+
+
+    - name: Add files to gh-pages
+      run: |
+        cd ${{ github.event.repository.name }}
+        shopt -s extglob
+        rm -rf *
+        if [[ -f .github/workflows ]]; then
+          rm -rf .github/workflows
+        fi
+        cp ../pages/* .
+        git add .
+        git commit -m "deploy"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.MS3_BOT_TOKEN }}
