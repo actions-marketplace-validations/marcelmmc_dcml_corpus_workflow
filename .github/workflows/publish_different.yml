@@ -45,8 +45,8 @@ jobs:
       run: |
         if [[ ! -f /pages/index.md ]]; then
           echo "Index not found, creating a new index"
-          echo "* [Generate](generate.html)" > "pages/index.md"
-          echo "* [Notes_stats](notes_stats.html)" >> "pages/index.md"
+          echo "* [Generate](generate.html)" > "./pages/index.md"
+          echo "* [Notes_stats](notes_stats.html)" >> "./pages/index.md"
         else
           line=$(head -n 1 index.md)
           if [[ line != "\* [Generate](generate.md)" ]]; then
