@@ -63,7 +63,7 @@ jobs:
       run: |
         cd ${{ github.event.repository.name }}
         shopt -s extglob
-        rm -rf *
+        sudo rm -rf *
         if [[ ! -f .github/workflows ]]; then
           rm -rf .github/workflows
         fi
