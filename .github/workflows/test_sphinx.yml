@@ -36,6 +36,10 @@ jobs:
         ipython kernel install --name "dimcat" --user
         make html
         ls -a
+        mv _build /pages
+        cd /
+        ls -a
+
 
 
     # - name: Generate html from corpus via dcml_corpus_workflow action
