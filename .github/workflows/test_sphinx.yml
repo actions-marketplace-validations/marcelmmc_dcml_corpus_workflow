@@ -19,10 +19,10 @@ jobs:
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
-        git config --local user.email "marcel.morancalderon@epfl.ch"
-        git config --local user.name "marcelmmc"
-        git config --global user.token ${{ secrets.CELMARBOT2 }}
         git clone https://github.com/DCMLab/dimcat.git
+        # git config --local user.email "marcel.morancalderon@epfl.ch"
+        # git config --local user.name "marcelmmc"
+        # git config --global user.token ${{ secrets.CELMARBOT2 }}
         cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
         git submodule update --init --recursive
 
