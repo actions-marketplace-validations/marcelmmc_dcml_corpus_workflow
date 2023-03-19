@@ -30,7 +30,7 @@ jobs:
       continue-on-error: false
       run: |
         pip install Sphinx
-        cd dimcat/notebooks/docs
+        cd /dimcat/docs
         ls -a
         make html
         ls -a
