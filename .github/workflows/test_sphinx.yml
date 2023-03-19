@@ -33,6 +33,7 @@ jobs:
         cd dimcat/docs
         ls -a
         ipython kernel install --name "ms3" --user
+        ipython kernel install --name "dimcat" --user
         make html
         ls -a
 
