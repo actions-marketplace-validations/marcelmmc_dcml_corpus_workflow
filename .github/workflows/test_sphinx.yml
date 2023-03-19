@@ -20,7 +20,7 @@ jobs:
       continue-on-error: false
       run: |
         sudo apt-get update
-        apt-get -y install git
+        sudo apt-get -y install git
 
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
