@@ -16,20 +16,12 @@ jobs:
         path: ${{ github.event.repository.name }}
 
 
-    - name: Setting up conf
+    - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
-
-        # git config --local user.email "dcml.annotators@epfl.ch"
-        # git config --local user.name "ms3-bot"
-        # git config --global user.token ${{ secrets.MS3_BOT_TOKEN }}
-
-    - name: Download dimcat repository, install dependecies and pull notebooks
-      continue-on-error: false
-      run: |
         git clone https://github.com/DCMLab/dimcat.git
         cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
         git submodule update --init --recursive
