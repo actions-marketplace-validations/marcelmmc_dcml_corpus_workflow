@@ -26,7 +26,7 @@ jobs:
     - name: Testing repo
       continue-on-error: false
       run: |
-        git clone https://github.com/DCMLab/ABC.git
+        git clone https://github.com/DCMLab/tchaikovsky_seasons.git
 
     - name: Start sphinx
       continue-on-error: false
@@ -35,7 +35,7 @@ jobs:
         cd dimcat/docs
         ls -a
         # export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}"
-        export CORPUS_PATH="${{ github.workspace }}/ABC"
+        export CORPUS_PATH="${{ github.workspace }}/tchaikovsky_seasons"
         echo "$CORPUS_PATH"
         ipython kernel install --name "ms3" --user
         ipython kernel install --name "dimcat" --user
