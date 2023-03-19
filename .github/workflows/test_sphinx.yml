@@ -32,6 +32,9 @@ jobs:
         pip install Sphinx
         cd dimcat/docs
         ls -a
+        # export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}"
+        export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}/testPath/tchaikovsky_seasons"
+        echo "$CORPUS_PATH"
         ipython kernel install --name "ms3" --user
         ipython kernel install --name "dimcat" --user
         make html
