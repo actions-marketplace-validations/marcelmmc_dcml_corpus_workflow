@@ -6,7 +6,6 @@ on:
 jobs:
   generate_and_publish:
     if: >
-      github.actor != 'marcelmmc' && github.event.pusher.name != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout corpus repository
