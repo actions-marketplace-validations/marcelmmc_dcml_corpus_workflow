@@ -1,0 +1,99 @@
+name: test_sphinx
+
+on:
+  push:
+
+jobs:
+  generate_and_publish:
+    if: >
+      github.actor != 'marcelmmc' && github.event.pusher.name != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout corpus repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.CELMARBOT2 }}
+        path: ${{ github.event.repository.name }}
+
+
+    - name: Setting up conf
+      continue-on-error: false
+      run: |
+        sudo apt-get update
+        apt-get -y install git
+
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
+        git config --global user.token ${{ secrets.CELMARBOT2 }}
+
+        # git config --local user.email "dcml.annotators@epfl.ch"
+        # git config --local user.name "ms3-bot"
+        # git config --global user.token ${{ secrets.MS3_BOT_TOKEN }}
+
+    - name: Download dimcat repository, install dependecies and pull notebooks
+      continue-on-error: false
+      run: |
+        git clone https://github.com/DCMLab/dimcat.git
+        cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
+        git submodule update --init --recursive
+
+    - name: Start sphinx
+      continue-on-error: false
+      run: |
+        pip install Sphinx
+        ls -a
+        make html
+        ls -a
+
+
+    # - name: Generate html from corpus via dcml_corpus_workflow action
+    #   uses: DCMLab/dcml_corpus_workflow@v2.6.9-ms3-1.2.4.post0.dev3-g5df6c9f-dimcat-0.3.0.post1.dev3-gde5198b
+    #   id: act_docker
+    #   with:
+    #     ms3-command: "update_website"
+    #   env:
+    #     Token: "${{ secrets.MS3_BOT_TOKEN }}"
+    #     commitFrom: "${{ github.event.before }}"
+    #     comment_msg:  "${{ github.event.head_commit.message }}"
+    #     directory: "${{ github.workspace }}"
+    #     working_dir: ${{ github.event.repository.name }}
+    #     envPath: "${{ github.workspace }}/${{ github.event.repository.name }}"
+    #
+    # - name: Check pages are generated
+    #   continue-on-error: false
+    #   run: |
+    #     if [[ -f ./pages/generate.html ]] && [[ -f ./pages/notes_stats.html ]]; then
+    #       echo "Pages generated"
+    #     else
+    #       echo "There was a problem generating pages"
+    #       exit 1
+    #     fi
+    #
+    # - name: Switch or create a gh-pages branch
+    #   continue-on-error: true
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     git branch --all
+    #     exist=$(echo $(git branch --all | grep "gh-pages"))
+    #     if [[ -z "$exist" ]]; then
+    #       git checkout -b gh-pages
+    #       git push --set-upstream origin gh-pages
+    #     else
+    #       git checkout gh-pages
+    #     fi
+    #
+    # - name: Add files to gh-pages
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     shopt -s extglob
+    #     sudo rm -rf !(index.md)
+    #     if [[ -f .github/workflows ]]; then
+    #       sudo rm -rf .github/workflows
+    #     fi
+    #     cp ../pages/* .
+    #     git add .
+    #     git commit -m "deploy"
+    #     git push
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.MS3_BOT_TOKEN }}
