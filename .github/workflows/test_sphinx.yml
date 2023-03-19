@@ -79,7 +79,7 @@ jobs:
         if [[ -f .github/workflows ]]; then
           sudo rm -rf .github/workflows
         fi
-        cp ../pages/* .
+        cp -r ../pages/* .
         git add .
         git commit -m "deploy"
         git push
