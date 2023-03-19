@@ -19,9 +19,6 @@ jobs:
     - name: Setting up conf
       continue-on-error: false
       run: |
-        sudo apt-get update
-        sudo apt-get -y install git
-
         git config --local user.email "marcel.morancalderon@epfl.ch"
         git config --local user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
