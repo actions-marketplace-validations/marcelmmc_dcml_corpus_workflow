@@ -20,9 +20,6 @@ jobs:
       continue-on-error: false
       run: |
         git clone https://github.com/DCMLab/dimcat.git
-        # git config --local user.email "marcel.morancalderon@epfl.ch"
-        # git config --local user.name "marcelmmc"
-        # git config --global user.token ${{ secrets.CELMARBOT2 }}
         cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
         git submodule update --init --recursive
 
@@ -80,6 +77,10 @@ jobs:
           sudo rm -rf .github/workflows
         fi
         cp -r ../pages/* .
+
+        git config --local user.email "marcel.morancalderon@epfl.ch"
+        git config --local user.name "marcelmmc"
+        git config --global user.token ${{ secrets.CELMARBOT2 }}
         git config --global --add safe.directory "${{ github.workspace }}/${{ github.event.repository.name }}"
         git add .
         git commit -m "deploy"
