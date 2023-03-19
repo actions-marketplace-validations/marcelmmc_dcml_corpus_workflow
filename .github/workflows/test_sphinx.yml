@@ -23,6 +23,11 @@ jobs:
         cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
         git submodule update --init --recursive
 
+    - name: Testing repo
+      continue-on-error: false
+      run: |
+        git clone https://github.com/DCMLab/ABC.git
+
     - name: Start sphinx
       continue-on-error: false
       run: |
@@ -30,7 +35,7 @@ jobs:
         cd dimcat/docs
         ls -a
         # export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}"
-        export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}/testPath/tchaikovsky_seasons"
+        export CORPUS_PATH="${{ github.workspace }}/ABC"
         echo "$CORPUS_PATH"
         ipython kernel install --name "ms3" --user
         ipython kernel install --name "dimcat" --user
