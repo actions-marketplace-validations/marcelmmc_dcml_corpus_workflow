@@ -32,6 +32,7 @@ jobs:
         pip install Sphinx
         cd dimcat/docs
         ls -a
+        ipython kernel install --name "ms3" --user
         make html
         ls -a
 
