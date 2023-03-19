@@ -24,6 +24,7 @@
 * [Overview](#overview)
 <!-- TOC -->
 
+
 # Pyotr Tchaikovsky - The Seasons (A corpus of annotated scores)
 
 This corpus of annotated [MuseScore](https://musescore.org) files has been created within
@@ -48,7 +49,7 @@ using [ms3 1.1.1](https://pypi.org/project/ms3/). Syntax errors in the phrase br
 ### With full version history
 
 The dataset is version-controlled via [git](https://git-scm.com/). In order to download the files with all
-revisions they have gone through, git needs to be installed on your machine. Then you can clone this 
+revisions they have gone through, git needs to be installed on your machine. Then you can clone this
 repository using the command
 
 ```bash
@@ -63,7 +64,7 @@ If you are only interested in the current version of the corpus, you can simply 
 
 ## Data Formats
 
-Each piece in this corpus is represented by four files with identical names, each in its own folder. For example, 
+Each piece in this corpus is represented by four files with identical names, each in its own folder. For example,
 the first movement has the following files:
 
 * `MS3/op37a01.mscx`: Uncompressed MuseScore file including the music and annotation labels.
@@ -76,7 +77,7 @@ the first movement has the following files:
 
 After navigating to your local copy, you can open the scores in the folder `MS3` with the free and open source score
 editor [MuseScore](https://musescore.org). Please note that the scores have been edited, annotated and tested with
-[MuseScore 3.6.2](https://github.com/musescore/MuseScore/releases/tag/v3.6.2). 
+[MuseScore 3.6.2](https://github.com/musescore/MuseScore/releases/tag/v3.6.2).
 MuseScore 4 has since been released and preliminary tests suggest that it renders them correctly.
 
 ### Opening TSV files in a spreadsheet
@@ -187,7 +188,7 @@ Creative Commons Attribution-ShareAlike 4.0 International License ([CC BY-SA 4.0
 
 ## Naming convention
 
-The file names listed in the [Overview](#overview) below refer to the 
+The file names listed in the [Overview](#overview) below refer to the
 [12 pieces contained in op. 37](https://imslp.org/wiki/The_Seasons,_Op.37a_(Tchaikovsky,_Pyotr)).
 
 # Overview
