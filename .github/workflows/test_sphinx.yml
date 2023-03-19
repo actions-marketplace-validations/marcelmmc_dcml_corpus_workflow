@@ -80,6 +80,7 @@ jobs:
           sudo rm -rf .github/workflows
         fi
         cp -r ../pages/* .
+        git config --global --add safe.directory "${{ github.workspace }}/${{ github.event.repository.name }}"
         git add .
         git commit -m "deploy"
         git push
