@@ -49,7 +49,7 @@ jobs:
         ipython kernel install --name "dimcat" --user
         make html
         ls -a
-        sudo mv _build/html ../../pages
+        sudo mv build/html ../../pages
         cd ../../
         ls -a
         cd pages
