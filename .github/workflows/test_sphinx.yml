@@ -31,10 +31,10 @@ jobs:
         token: ${{ secrets.CELMARBOT2 }}
         path: ${{ github.event.repository.name }}
 
-    # - name: Testing repo
-    #   continue-on-error: false
-    #   run: |
-    #     git clone https://github.com/DCMLab/tchaikovsky_seasons.git
+    - name: Testing repo
+      continue-on-error: false
+      run: |
+        git clone https://github.com/DCMLab/tchaikovsky_seasons.git
 
     - name: Start sphinx
       continue-on-error: false
@@ -43,8 +43,8 @@ jobs:
         cd corpus_docs
         ls -a
         # export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}"
-        # export CORPUS_PATH="${{ github.workspace }}/tchaikovsky_seasons"
-        # echo "$CORPUS_PATH"
+        export CORPUS_PATH="${{ github.workspace }}/tchaikovsky_seasons"
+        echo "$CORPUS_PATH"
         ipython kernel install --name "ms3" --user
         ipython kernel install --name "dimcat" --user
         make html
