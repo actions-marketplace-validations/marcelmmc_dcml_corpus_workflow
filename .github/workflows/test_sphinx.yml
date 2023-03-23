@@ -19,9 +19,8 @@ jobs:
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
-        git clone https://github.com/DCMLab/dimcat.git
-        cd dimcat && git checkout notebooks && cd docs && pip install -r requirements.txt
-        git submodule update --init --recursive
+        git clone https://github.com/DCMLab/corpus_docs --recurse-submodules
+        cd corpus_docs && pip install -r requirements.txt
 
     - name: Testing repo
       continue-on-error: false
@@ -32,7 +31,7 @@ jobs:
       continue-on-error: false
       run: |
         pip install Sphinx
-        cd dimcat/docs
+        cd corpus_docs/notebooks
         ls -a
         # export CORPUS_PATH="${{ github.workspace }}/${{ github.event.repository.name }}"
         export CORPUS_PATH="${{ github.workspace }}/tchaikovsky_seasons"
@@ -74,21 +73,30 @@ jobs:
         fi
 
     - name: Add files to gh-pages
-      run: |
-        cd ${{ github.event.repository.name }}
-        shopt -s extglob
-        sudo rm -rf *
-        if [[ -f .github/workflows ]]; then
-          sudo rm -rf .github/workflows
-        fi
-        cp -r ../pages/* .
-        echo "" > .nojekyll
-        git config --local user.email "marcel.morancalderon@epfl.ch"
-        git config --local user.name "marcelmmc"
-        git config --global user.token ${{ secrets.CELMARBOT2 }}
-        git config --global --add safe.directory "${{ github.workspace }}/${{ github.event.repository.name }}"
-        git add .
-        git commit -m "deploy"
-        git push
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./pages
+        enable_jekyll: false
       env:
         GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
+
+    # - name: Add files to gh-pages
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     shopt -s extglob
+    #     sudo rm -rf *
+    #     if [[ -f .github/workflows ]]; then
+    #       sudo rm -rf .github/workflows
+    #     fi
+    #     cp -r ../pages/* .
+    #     echo "" > .nojekyll
+    #     git config --local user.email "marcel.morancalderon@epfl.ch"
+    #     git config --local user.name "marcelmmc"
+    #     git config --global user.token ${{ secrets.CELMARBOT2 }}
+    #     git config --global --add safe.directory "${{ github.workspace }}/${{ github.event.repository.name }}"
+    #     git add .
+    #     git commit -m "deploy"
+    #     git push
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
