@@ -16,7 +16,7 @@ jobs:
         repository: 'DCMLab/corpus_docs'
         fetch-depth: 0
         token: ${{ secrets.CELMARBOT2 }}
-
+        path: corpus_docs
 
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
@@ -30,7 +30,7 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.CELMARBOT2 }}
         path: ${{ github.event.repository.name }}
-        
+
     - name: Testing repo
       continue-on-error: false
       run: |
