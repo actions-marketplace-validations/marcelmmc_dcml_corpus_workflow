@@ -19,8 +19,8 @@ jobs:
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
-        git config --local user.email "marcel.morancalderon@epfl.ch"
-        git config --local user.name "marcelmmc"
+        git config --global user.email "marcel.morancalderon@epfl.ch"
+        git config --global user.name "marcelmmc"
         git config --global user.token ${{ secrets.CELMARBOT2 }}
         git clone https://github.com/DCMLab/corpus_docs --recurse-submodules
         cd corpus_docs && pip install -r requirements.txt
