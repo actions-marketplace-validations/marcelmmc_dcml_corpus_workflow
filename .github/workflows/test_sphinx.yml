@@ -74,18 +74,18 @@ jobs:
           exit 1
         fi
 
-    - name: Switch or create a gh-pages branch
-      continue-on-error: true
-      run: |
-        cd ${{ github.event.repository.name }}
-        git branch --all
-        exist=$(echo $(git branch --all | grep "gh-pages"))
-        if [[ -z "$exist" ]]; then
-          git checkout -b gh-pages
-          git push --set-upstream origin gh-pages
-        else
-          git checkout gh-pages
-        fi
+    # - name: Switch or create a gh-pages branch
+    #   continue-on-error: true
+    #   run: |
+    #     cd ${{ github.event.repository.name }}
+    #     git branch --all
+    #     exist=$(echo $(git branch --all | grep "gh-pages"))
+    #     if [[ -z "$exist" ]]; then
+    #       git checkout -b gh-pages
+    #       git push --set-upstream origin gh-pages
+    #     else
+    #       git checkout gh-pages
+    #     fi
 
     - name: Add files to gh-pages
       uses: peaceiris/actions-gh-pages@v3
@@ -95,23 +95,3 @@ jobs:
         enable_jekyll: false
       env:
         GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
-
-    # - name: Add files to gh-pages
-    #   run: |
-    #     cd ${{ github.event.repository.name }}
-    #     shopt -s extglob
-    #     sudo rm -rf *
-    #     if [[ -f .github/workflows ]]; then
-    #       sudo rm -rf .github/workflows
-    #     fi
-    #     cp -r ../pages/* .
-    #     echo "" > .nojekyll
-    #     git config --local user.email "marcel.morancalderon@epfl.ch"
-    #     git config --local user.name "marcelmmc"
-    #     git config --global user.token ${{ secrets.CELMARBOT2 }}
-    #     git config --global --add safe.directory "${{ github.workspace }}/${{ github.event.repository.name }}"
-    #     git add .
-    #     git commit -m "deploy"
-    #     git push
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.CELMARBOT2 }}
