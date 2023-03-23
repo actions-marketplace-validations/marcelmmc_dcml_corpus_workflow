@@ -74,7 +74,7 @@ jobs:
           exit 1
         fi
 
-    # - name: Switch or create a gh-pages branch
+
     #   continue-on-error: true
     #   run: |
     #     cd ${{ github.event.repository.name }}
@@ -86,6 +86,7 @@ jobs:
     #     else
     #       git checkout gh-pages
     #     fi
+
 
 
 
