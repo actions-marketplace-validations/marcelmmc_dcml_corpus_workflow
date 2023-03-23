@@ -22,8 +22,9 @@ jobs:
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
-        cd corpus_docs & pip install -r requirements.txt
-
+        cd corpus_docs
+        ls -a
+        pip install -r requirements.txt
     - name: Checkout corpus repository
       uses: actions/checkout@v3
       with:
