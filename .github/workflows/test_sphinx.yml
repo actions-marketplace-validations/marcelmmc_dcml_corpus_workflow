@@ -49,8 +49,8 @@ jobs:
         ipython kernel install --name "dimcat" --user
         make html
         ls -a
-        sudo mv build/html ../../pages
-        cd ../../
+        sudo mv build/html "${{ github.workspace }}"/pages
+        cd "${{ github.workspace }}"
         ls -a
         cd pages
         ls -a
