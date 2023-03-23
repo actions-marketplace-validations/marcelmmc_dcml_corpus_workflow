@@ -19,11 +19,10 @@ jobs:
         token: ${{ secrets.CELMARBOT2 }}
         path: corpus_docs
 
-    # - name: Download dimcat repository, install dependecies and pull notebooks
-    #   continue-on-error: false
-    #   run: |
-    #     cd corpus_docs
-    #     git submodule update --init --recursive
+    - name: Download dimcat repository, install dependecies and pull notebooks
+      continue-on-error: false
+      run: |
+        cd corpus_docs & pip install -r requirements.txt
 
     - name: Checkout corpus repository
       uses: actions/checkout@v3
