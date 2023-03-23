@@ -74,18 +74,18 @@ jobs:
           exit 1
         fi
 
-    # - name: Switch or create a gh-pages branch
-    #   continue-on-error: true
-    #   run: |
-    #     cd ${{ github.event.repository.name }}
-    #     git branch --all
-    #     exist=$(echo $(git branch --all | grep "gh-pages"))
-    #     if [[ -z "$exist" ]]; then
-    #       git checkout -b gh-pages
-    #       git push --set-upstream origin gh-pages
-    #     else
-    #       git checkout gh-pages
-    #     fi
+    - name: Switch or create a gh-pages branch
+      continue-on-error: true
+      run: |
+        cd ${{ github.event.repository.name }}
+        git branch --all
+        exist=$(echo $(git branch --all | grep "gh-pages"))
+        if [[ -z "$exist" ]]; then
+          git checkout -b gh-pages
+          git push --set-upstream origin gh-pages
+        else
+          git checkout gh-pages
+        fi
 
     - name: Add files to gh-pages
       uses: peaceiris/actions-gh-pages@v3
