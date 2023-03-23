@@ -8,28 +8,29 @@ jobs:
     if: >
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout corpus repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.CELMARBOT2 }}
-        path: ${{ github.event.repository.name }}
+
 
     - name: Checkout corpus_docs repository
       uses: actions/checkout@v3
       with:
         repository: 'DCMLab/corpus_docs'
         fetch-depth: 0
-        submodules: true
         token: ${{ secrets.CELMARBOT2 }}
 
 
     - name: Download dimcat repository, install dependecies and pull notebooks
       continue-on-error: false
       run: |
-        cd corpus_docs && pip install -r requirements.txt
-        ls -a
+        cd corpus_docs
+        git submodule update --init --recursive
 
+    - name: Checkout corpus repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.CELMARBOT2 }}
+        path: ${{ github.event.repository.name }}
+        
     - name: Testing repo
       continue-on-error: false
       run: |
