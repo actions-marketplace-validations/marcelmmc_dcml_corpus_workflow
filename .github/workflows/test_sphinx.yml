@@ -20,6 +20,7 @@ jobs:
       with:
         repository: 'DCMLab/corpus_docs'
         fetch-depth: 0
+        submodule: true
         token: ${{ secrets.CELMARBOT2 }}
 
 
@@ -27,9 +28,8 @@ jobs:
       continue-on-error: false
       run: |
         cd corpus_docs && pip install -r requirements.txt
-        git submodule update --init --recursive
         ls -a
-        
+
     - name: Testing repo
       continue-on-error: false
       run: |
