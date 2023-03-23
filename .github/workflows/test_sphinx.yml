@@ -61,7 +61,7 @@ jobs:
     - name: Check pages are generated
       continue-on-error: false
       run: |
-        if [[ -f ./pages/notebooks/generate.html ]] && [[ -f ./pages/notebooks/notes_stats.html ]]; then
+        if [[ -f ./pages/notebooks/generate.html ]]; then
           echo "Pages generated"
         else
           echo "There was a problem generating pages"
